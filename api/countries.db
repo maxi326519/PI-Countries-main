@@ -1,0 +1,17 @@
+CREATE TABLE country(
+    ID VARCHAR(20) PRIMARY KEY,
+    Nombre VARCHAR(20) UNIQUE,
+    Imagen VARCHAR(200),
+    Continente VARCHAR(20),
+    Capital VARCHAR(20) UNIQUE,
+    Subregión VARCHAR(20) UNIQUE,
+    Área VARCHAR(20) UNIQUE,
+    Población VARCHAR(20) UNIQUE
+);
+
+CREATE TABLE activity(
+    ID INTEGER PRIMARY KEY,
+    dificultad INTEGER,
+    duracion: INTEGER,
+    temporada: VARCHAR(20)
+);
