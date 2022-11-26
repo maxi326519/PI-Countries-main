@@ -1,7 +1,7 @@
 import React from 'react';
 
-import CountrieCard from './CountrieCard/CountrieCard';
-
+/* import CountrieCard from './CountrieCard/CountrieCard';
+ */
 export default class CountriesList extends React.Component{
     render(){
         return(
@@ -15,6 +15,7 @@ export default class CountriesList extends React.Component{
                             continent={ Agregar }
                         />
                     */
+                   /* Desarrollar el paginado */
                 }
             </div>
         )

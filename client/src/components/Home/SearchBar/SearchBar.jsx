@@ -18,12 +18,26 @@ export default class SearchBar extends React.Component {
         // Despachar Busqueda
     }
 
+    handleOrder(){
+        // Desarrollar menu desplegable
+    }
+
+    handleFilter(){
+        // Desarrollar menu desplegable
+    }
+
     render() {
         return (
-            <form className="search" onSubmit={this.handleSubmit}>
-                <input type='text' onChange={this.handleChange}/>
-                <input type='submit' value='Search'/>
-            </form>
+            <div className="search">
+                <form onSubmit={this.handleSubmit}>
+                    <input type='search' onChange={this.handleChange}/>
+                    <input type='submit' value='Search'/>
+                </form>
+                <div>
+                    <button className='search-order'>Order</button>
+                    <button className='search-filter'>Filter</button>
+                </div>
+            </div>
         );
     }
 }
