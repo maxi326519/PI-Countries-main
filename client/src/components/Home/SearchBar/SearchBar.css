@@ -1,0 +1,19 @@
+.search{
+    display: flex;
+    justify-content: center;
+    background-color: blue;
+}
+
+
+.search-order{
+    display: flex;
+}
+
+.search-order img{
+    height: 15px;
+    margin-right: 10px;
+}
+
+.search button{
+    margin: 0 10px;
+}

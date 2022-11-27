@@ -2,10 +2,13 @@ import React from 'react';
 
 /* import CountrieCard from './CountrieCard/CountrieCard';
  */
+
+import './CountriesList.css';
+
 export default class CountriesList extends React.Component{
     render(){
         return(
-            <div>
+            <div className='countries-list'>
                 {
                     /* Agregar map de Paises */
                     /* 

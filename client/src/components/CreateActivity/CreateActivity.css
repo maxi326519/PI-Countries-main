@@ -1,0 +1,16 @@
+.activity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: gray;
+}
+
+.activity form{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 20px;
+
+    background-color: red;
+}

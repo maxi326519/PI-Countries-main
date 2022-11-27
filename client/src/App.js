@@ -11,7 +11,7 @@ function App() {
       <h1>Henry Countries</h1>
       <Route exact path='/' component={Home}/>
       <Route path='/countries/:id' component={Details}/>
-      <Route path='/countries' component={CreateActivity}/>
+      <Route path='/add-activity' component={CreateActivity}/>
     </div>
   );
 }
