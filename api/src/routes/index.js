@@ -2,17 +2,21 @@ const { Router } = require('express');
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 
-
 const router = Router();
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
+/* getCountriesList
+getDetails
+getCountrie
+addActivity */
+
 router.get('/countries',(req, res)=>{
     // Traer info de la base de datos
     // Devolver un listado de las paises
     try{
-
+        res.status(200).json({ countries: true });
     }catch(exception){
         res.status(/* DEFINIR */).json({ error: exception.message });
     }
