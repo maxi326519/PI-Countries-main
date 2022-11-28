@@ -7,44 +7,44 @@ const router = Router();
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
-/* getCountriesList
-getDetails
-getCountrie
-addActivity */
+const { getData, getCountriesList, getDetails, getCountrie, addActivity } = require('../controllers');
 
-router.get('/countries',(req, res)=>{
+router.get('/countries',async (req, res)=>{
     // Traer info de la base de datos
     // Devolver un listado de las paises
-    try{
-        res.status(200).json({ countries: true });
-    }catch(exception){
-        res.status(/* DEFINIR */).json({ error: exception.message });
-    }
-});
-
-router.get('/countries/:pais', (req, res)=>{
-    // Devolver detalles de los paises y actividades turisticas
-    try{
-
-    }catch(exception){
-        res.status(/* DEFINIR */).json({ error: exception.message });
-    }
-});
-
-router.get('/countries',(req, res)=>{
     const { name } = req.query;
     try{
-        // Devolver los paises que coincidan con el texto pasado por parametros (No exacto, que contenga)
+        let response;
+        if(name) response = getCountrie(name);
+        else{
+            await getData();
+            response = await getCountriesList();
+        }
+        res.status(200).json(response);
     }catch(exception){
-        res.status(/* DEFINIR */).json({ error: exception.message });
+        res.status(404).json({ error: exception.message });
     }
 });
 
-router.post('/activities', (req, res)=>{
+router.get('/countries/:id', async (req, res)=>{
+    // Devolver detalles de los paises y actividades turisticas
+    const { id } = req.params;
     try{
-
+        const response = await getDetails(id, data);
+        res.status(200).json(response);
     }catch(exception){
-        res.status(/* DEFINIR */).json({ error: exception.message });
+        res.status(404).json({ error: exception.message });
+    }
+});
+
+router.post('/activities', async (req, res)=>{
+    const body = req.body;
+    console.log(body);
+    try{
+        const response = await addActivity();
+        res.status(200).json(response);
+    }catch(exception){
+        res.status(400).json({ error: exception.message });
     }
 });
 
