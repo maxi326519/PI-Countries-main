@@ -1,5 +1,6 @@
 :root {
   --color: #aaff55;
+  --max-width: 1400px;
 }
 
 *{
@@ -24,7 +25,8 @@ body{
   background-repeat: no-repeat;
   background-size: cover;
   background-position-y: 60%;
-  animation: 5s ease-in-out infinite img alternate;
+  background-attachment: fixed;
+  animation: 4s ease-in-out infinite img alternate;
 }
 
 @keyframes img{

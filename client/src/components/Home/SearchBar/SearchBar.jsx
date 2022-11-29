@@ -6,7 +6,7 @@ import change from "../../../assets/svg/change.svg";
 export default class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { countrie: "", order: 'A - Z'};
+    this.state = { countrie: "", order: 'Ascending '};
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleOrder = this.handleOrder.bind(this);
@@ -22,10 +22,10 @@ export default class SearchBar extends React.Component {
   }
 
   handleOrder() {
-    if(this.state.order === 'A - Z')
-        this.setState({ ...this.state, order: 'Z - A' });
+    if(this.state.order === 'Ascending')
+        this.setState({ ...this.state, order: 'Descending' });
     else
-        this.setState({ ...this.state, order: 'A - Z' });
+        this.setState({ ...this.state, order: 'Ascending' });
   }
 
   handleFilter() {

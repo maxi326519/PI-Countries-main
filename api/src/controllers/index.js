@@ -58,7 +58,8 @@ async function getCountriesList(){
             id: c.fifa,
             name: c.name.official,
             continent: c.continents,
-            img: c.flags,
+            population: c.population,
+            img: c.flags
         }
     });
 }

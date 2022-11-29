@@ -1,14 +1,11 @@
 import React from 'react';
 
 export default class Details extends React.Component{
-    constructor(props){
-        super(props);
-    }
 
     render(){
         return(
             <div>
-                <img src={ this.props.img }/>
+                <img src={ this.props.img } alt={`${this.props.name}-flag`}/>
                 <span>{ this.props.id }</span>
                 <span>{ this.props.countrie }</span>
                 <span>{ this.props.continent }</span>
