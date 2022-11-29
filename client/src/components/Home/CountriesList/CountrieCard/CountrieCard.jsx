@@ -8,7 +8,7 @@ export default class CountrieCard extends React.Component{
     render(){
         return(
             <div>
-                <img src={ this.props.img }/>
+                <img src={ this.props.img[0] }/>
                 <div>
                     <span>{ this.props.countrie }</span>
                     <span>{ this.props.continent }</span>

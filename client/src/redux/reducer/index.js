@@ -21,13 +21,13 @@ export default function rootReducer(state = initialState, action){
         case GET_COUNTRIES_LIST:
             return {
                 ...state,
-                list: action.paylod
+                list: action.payload
             }   
 
         case GET_COUNTRIE:
             return {
                 ...state,
-                countries: action.payload
+                countries: [ ...action.payload ]
             }
 
         case GET_DETAILS:

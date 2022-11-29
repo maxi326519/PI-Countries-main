@@ -17,7 +17,7 @@ router.get('/countries',async (req, res)=>{
         let response;
         if(name) response = getCountrie(name);
         else{
-            await getData();
+            console.log('trae todo');
             response = await getCountriesList();
         }
         res.status(200).json(response);

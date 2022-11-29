@@ -42,7 +42,7 @@ async function getData(){
             id: e.fifa,
             name: e.name.common,
             img: e.flags,
-            continent: e.continents,
+            continent: e.continent,
             capital: e.capital,
             subregion: e.subregion,
             area: e.area,
@@ -55,9 +55,10 @@ async function getCountriesList(){
     const data = readData();
     return data.map( c => {
         return{
-            name: c.name,
-            continent: c.continent,
-            img: c.img,
+            id: c.fifa,
+            name: c.name.official,
+            continent: c.continents,
+            img: c.flags,
         }
     });
 }
