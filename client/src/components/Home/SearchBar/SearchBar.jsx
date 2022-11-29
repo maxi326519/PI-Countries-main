@@ -37,7 +37,7 @@ export default class SearchBar extends React.Component {
       <div className="search">
         <form onSubmit={this.handleSubmit}>
           <input type="search" onChange={this.handleChange} />
-          <input type="submit" value="Search" />
+          <button type="submit">Search</button>
         </form>
         <button className="search-order" onClick={this.handleOrder}>
           <img src={change} alt="change" />
