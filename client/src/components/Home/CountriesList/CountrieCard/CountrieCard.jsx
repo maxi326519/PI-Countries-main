@@ -12,7 +12,7 @@ export default class CountrieCard extends React.Component {
           <img src={this.props.img} alt={`${this.props.name}-flag`} />
         </div>
         <div className="card-data">
-          <Link>
+          <Link to={`/countries/${this.props.id}`}>
             <h3 className="card-data_name">{this.props.countrie}</h3>
           </Link>
           <div className="card-data__text">

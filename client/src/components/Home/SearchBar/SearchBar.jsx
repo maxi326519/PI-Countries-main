@@ -1,9 +1,11 @@
 import React from "react";
+import { connect } from 'react-redux';
+import { orderCountries, filterCountries } from '../../../redux/actions';
 
 import "./SearchBar.css";
 import change from "../../../assets/svg/change.svg";
 
-export default class SearchBar extends React.Component {
+class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = { countrie: "", order: 'Ascending '};
@@ -23,9 +25,10 @@ export default class SearchBar extends React.Component {
 
   handleOrder() {
     if(this.state.order === 'Ascending')
-        this.setState({ ...this.state, order: 'Descending' });
+      this.setState({ ...this.state, order: 'Ascending' });
     else
-        this.setState({ ...this.state, order: 'Ascending' });
+      this.setState({ ...this.state, order: 'Descending' });
+    this.props.orderCountries();
   }
 
   handleFilter() {
@@ -48,3 +51,18 @@ export default class SearchBar extends React.Component {
     );
   }
 }
+
+function mapStateToProps(){
+  return{
+
+  }
+}
+
+function mapDispatchToProps(dispatch){
+  return{
+    orderCountries: () => dispatch(orderCountries()),
+    filterCountries: filters => dispatch(filters)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

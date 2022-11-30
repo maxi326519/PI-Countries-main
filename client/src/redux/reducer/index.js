@@ -1,3 +1,4 @@
+import { bindActionCreators } from 'redux';
 import {
     GET_COUNTRIE,
     GET_DETAILS,
@@ -11,7 +12,7 @@ const initialState = {
     list: [],
     countries: [],
     details: [],
-    filter: [],
+    filters: {},
     activities: []
 }
 
@@ -21,7 +22,15 @@ export default function rootReducer(state = initialState, action){
         case GET_COUNTRIES_LIST:
             return {
                 ...state,
-                list: action.payload
+                list: action.payload.sort((a, b) =>{
+                    if (a.name > b.name) {
+                        return 1;
+                      }
+                      if (a.name < b.name) {
+                        return -1;
+                      }
+                      return 0;
+                })
             }   
 
         case GET_COUNTRIE:
@@ -45,13 +54,13 @@ export default function rootReducer(state = initialState, action){
         case ORDER_COUNTRIES:
             return {
                 ...state,
-                /* HACER PRUEBAS */
+                list: [ ...state.list.reverse() ]
             }
 
         case FILTER_COUNTRIES:
             return {
                 ...state,
-                /* REVISAR QUE TIPO DE FILTRADOS REALIZAR */
+                filters: action.payload
             }
         
         default:

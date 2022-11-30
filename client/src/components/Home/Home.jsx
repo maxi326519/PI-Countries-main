@@ -9,7 +9,9 @@ export default class Home extends React.Component {
         return(
             <div className='home'>
                 <SearchBar/>
-                <CountriesList/>
+                <CountriesList
+                    page={ this.props.match.params.id }
+                />
             </div>
         )
     }
