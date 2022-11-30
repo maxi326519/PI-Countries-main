@@ -32,7 +32,7 @@ class CountriesList extends React.Component {
                   <CountrieCard
                     key={i}
                     id={countrie.id}
-                    img={countrie.img[0]}
+                    img={countrie.img}
                     countrie={countrie.name}
                     continent={countrie.continent}
                     population={countrie.population}

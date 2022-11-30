@@ -1,20 +1,49 @@
-import React from 'react';
+import React from "react";
+import { getDetails } from "../../redux/actions";
+import { connect } from "react-redux";
 
-export default class Details extends React.Component{
+import "./Details.css";
 
-    render(){
-        return(
-            <div>
-                <img src={ this.props.img } alt={`${this.props.name}-flag`}/>
-                <span>{ this.props.id }</span>
-                <span>{ this.props.countrie }</span>
-                <span>{ this.props.continent }</span>
-                <span>{ this.props.capital }</span>
-                <span>{ this.props.subRegion }</span>
-                <span>{ this.props.area }</span>
-                <span>{ this.props.pupulation }</span>
-                <span>{ this.props.activitiys }</span>
-            </div>
-        )
-    }
+class Details extends React.Component {
+  componentDidMount() {
+    this.props.getDetails(this.props.match.params.id);
+  }
+
+  render() {
+    return (
+        <div className="details">
+          <div className=""></div>
+          <div className="details__img">
+            <img
+              src={this.props.details.img}
+              alt={`${this.props.details.name}-flag`}
+            />
+          </div>
+          <div className="details__text">
+            <span>id: {this.props.details.id}</span>
+            <span>Name: {this.props.details.name}</span>
+            <span>Continent: {this.props.details.continent}</span>
+            <span>Capital: {this.props.details.capital}</span>
+            <span>Subregion: {this.props.details.subregion}</span>
+            <span>Area: {this.props.details.area}</span>
+            <span>Population: {this.props.details.population}</span>
+            <span>Activities: {this.props.details.activitiys}</span>
+          </div>
+        </div>
+    );
+  }
 }
+
+function mapStateToProps(state) {
+  return {
+    details: state.details,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    getDetails: (id) => dispatch(getDetails(id)),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details);
