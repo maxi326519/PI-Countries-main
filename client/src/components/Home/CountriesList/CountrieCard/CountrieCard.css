@@ -1,3 +1,8 @@
+:root {
+    --color: #aaff55;
+    --max-width: 1400px;
+}
+
 .card{
     display: flex;
     flex-direction: column;
@@ -31,6 +36,17 @@
 
 .card-data{
     padding: 20px;
+}
+
+.card-data a{
+    color: white;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+.card-data a:hover{
+    color: --color;
+    transition: 0.2s;
 }
 
 .card-data__text{

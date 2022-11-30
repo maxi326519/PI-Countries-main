@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 import "./CountrieCard.css";
 import population from "../../../../assets/svg/population.svg";
@@ -11,7 +12,9 @@ export default class CountrieCard extends React.Component {
           <img src={this.props.img} alt={`${this.props.name}-flag`} />
         </div>
         <div className="card-data">
-          <h3 className="card-data_name">{this.props.countrie}</h3>
+          <Link>
+            <h3 className="card-data_name">{this.props.countrie}</h3>
+          </Link>
           <div className="card-data__text">
             <div className="container">
               <img className="data-svg" src={population} alt="svg" />

@@ -22,7 +22,7 @@ class CountriesList extends React.Component{
             <div className='countries-list'>
                 {
                     this.props.list?.map( (countrie, i) =>{
-                        if(i<20){
+                        if(i<9){
                             const continent = [africa, europa, oceania, america, asia, antarctica]
                             return (
                                 <CountrieCard

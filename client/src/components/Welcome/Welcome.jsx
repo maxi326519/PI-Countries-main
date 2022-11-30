@@ -9,7 +9,7 @@ export default class Welcome extends React.Component{
         return(
             <div className='welcome'>
                 <h2>Welcome to the countries app!</h2>
-                <Link to='/countries'>Let's go</Link>
+                <Link to='/home/page/1'>Let's go</Link>
             </div>
         )
     }
