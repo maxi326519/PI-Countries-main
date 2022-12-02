@@ -1,12 +1,12 @@
 CREATE TABLE country(
     ID VARCHAR(20) PRIMARY KEY,
-    Nombre VARCHAR(20) UNIQUE,
-    Imagen VARCHAR(200),
-    Continente VARCHAR(20),
-    Capital VARCHAR(20) UNIQUE,
-    Subregión VARCHAR(20) UNIQUE,
-    Área VARCHAR(20) UNIQUE,
-    Población VARCHAR(20) UNIQUE
+    name VARCHAR(20) UNIQUE,
+    img VARCHAR(200),
+    continent VARCHAR(20),
+    capital VARCHAR(20),
+    subregion VARCHAR(20),
+    area VARCHAR(20),
+    population VARCHAR(20)
 );
 
 CREATE TABLE activity(

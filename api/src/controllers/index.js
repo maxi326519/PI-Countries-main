@@ -1,90 +1,64 @@
 const axios = require('axios');
 const fs = require('fs');
-/*
-    getCountriesList
-    getDetails
-    getCountrie
-    addActivity
-    api: https://restcountries.com/v3/all
-*/
+const { db, Op, Country } = require('../db.js');
 
 function readData(){
     return JSON.parse(fs.readFileSync('data.json', 'utf-8'));
 }
 
-function readActivity(){
-    return JSON.parse(fs.readFileSync('activity.json', 'utf-8'));
-}
-
-function writeActivity(data){
-    return JSON.parse(fs.writeFileSync(data, 'utf-8'));
-}
-
 async function getData(){
-    let data;
-    let error;
-    let procesedData = [];
+    const consult = await Country.findAndCountAll();
+    
+    if(consult.count === 0){
+        let data = readData(); // Cambiar por un fetch
 
-    /* PRODUCTION */
-    /*     
-    await axios.get('https://restcountries.com/v3/all')
-    .then( d => data = d.data )
-    .catch( e => err = e);
-
-    if(error) throw new Error(error);
-    */
-
-    /* DEVELOPMENT */
-    data = readData();
-
-    return data.map(e => {
-        return {
-            id: e.fifa,
-            name: e.name.common,
-            img: e.flags[0],
-            continent: e.continent,
-            capital: e.capital,
-            subregion: e.subregion,
-            area: e.area,
-            population: e.population
-        }
-    });
+        data.map(async e => {
+            await Country.create({
+                id: e.cca3,
+                name: e.name.common,
+                img: e.flags[0],
+                continent: e.continents[0],
+                capital: e.capital ? e.capital[0] : null,
+                subregion: e.subregion ? e.subregion : null,
+                area: e.area,
+                population: e.population
+            });
+        });
+    }
+    await Country.findAndCountAll();
 }
 
 async function getCountriesList(){
-    const data = readData();
-    return data.map( c => {
-        return{
-            id: c.fifa,
-            name: c.name.official,
-            continent: c.continents,
-            population: c.population,
-            img: c.flags[0]
-        }
+    return await Country.findAll({
+        attributes: [ 'id', 'name', 'img', 'continent', 'population']
+    });
+}
+
+async function getCountrie(name){
+    // Obtenemos todos los nombres para hacer compararlos con el string que nos pasan
+    const consult = await Country.findAll({
+        attributes: [ 'id', 'name' ]
+    });
+
+    // Macheamos los paises que contengan el string
+    match = consult.filter( c => c.dataValues.name.toLowerCase().includes(name.toLowerCase())).map(c => c.dataValues.id);
+    
+    // Devolvemos un error en caso de no encontrar nada
+    if(match.length === 0) throw new Error('Country not found');
+
+    // Por ultimo pedimos los detalles que necesitamos de esos paises para devolverlos
+    return await Country.findAll({
+        where: { id : match },
+        attributes: [ 'id', 'name', 'img', 'continent', 'population']
     });
 }
 
 async function getDetails(id){
-    const data = readData();
-    const response = data.find(e => e.fifa === id.toUpperCase());
-    if(!response) throw new Error('No se encontro el pais con es id');
-    return {
-        id: response.fifa,
-        name: response.name.common,
-        img: response.flags[0],
-        continent: response.continents,
-        capital: response.capital,
-        subregion: response.subregion,
-        area: response.area,
-        population: response.population
-    }; 
-}
-
-async function getCountrie(name){
-    const data = readData();
-    const countrie = data.find(e => e.name.toLowerCase() === name.toLowerCase());
-    if(!countrie) throw new Error('No se encontro el pais solicitado')
-    return countrie;
+    const consult = await Country.findOne({
+        where: { id: id }
+    });
+    if(!consult) throw new Error(`Country ${id} not found`);
+    return consult;
 }
 
 async function addActivity(data){

@@ -15,9 +15,10 @@ router.get('/countries',async (req, res)=>{
     const { name } = req.query;
     try{
         let response;
-        if(name) response = getCountrie(name);
-        else{
-            console.log('trae todo');
+        if(name){
+            response = await getCountrie(name);
+        }else{
+            await getData();
             response = await getCountriesList();
         }
         res.status(200).json(response);
