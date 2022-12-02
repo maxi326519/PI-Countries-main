@@ -3,6 +3,7 @@ import { getDetails } from "../../redux/actions";
 import { connect } from "react-redux";
 
 import "./Details.css";
+import arrow from '../../assets/svg/arrow-left.svg'
 
 class Details extends React.Component {
   componentDidMount() {
@@ -11,8 +12,9 @@ class Details extends React.Component {
 
   render() {
     return (
-        <div className="details">
-          <div className=""></div>
+      <div className="details">
+        <button className="details__back">{'< Back'}</button>
+        <div className="details__container">
           <div className="details__img">
             <img
               src={this.props.details.img}
@@ -30,6 +32,7 @@ class Details extends React.Component {
             <span>Activities: {this.props.details.activitiys}</span>
           </div>
         </div>
+      </div>
     );
   }
 }

@@ -16,6 +16,14 @@ class CountriesList extends React.Component {
     constructor(props){
         super(props);
         this.amount = 10;
+        this.filters = {
+          america: false,
+          europa: true,
+          africa: true,
+          asia: true,
+          oceania: true,
+          antarctica: false,
+        }
     }
   componentDidMount() {
     this.props.getCountriesList();
@@ -25,7 +33,15 @@ class CountriesList extends React.Component {
     return (
       <div className="countries-list">
         <div className="countries-list__container">
-            {this.props.list?.map((countrie, i) => {
+            {this.props.list?.filter( e => {
+              if(e.continent[0].includes('America')) return this.filters.america;
+              if(e.continent[0].includes('Europe')) return this.filters.europa;
+              if(e.continent[0].includes('Africa')) return this.filters.africa;
+              if(e.continent[0].includes('Asia')) return this.filters.asia;
+              if(e.continent[0].includes('Oceania')) return this.filters.oceania;
+              if(e.continent[0].includes('Antarctica')) return this.filters.antarctica;
+              return true;
+            }).map((countrie, i) => {
               const continent = [africa, europa, oceania, america, asia, antarctica];
               if ((i >= (this.amount * this.props.page) - this.amount) && (i < this.amount * this.props.page)) {
                 return (

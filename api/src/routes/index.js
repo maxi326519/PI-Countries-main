@@ -29,8 +29,9 @@ router.get('/countries',async (req, res)=>{
 router.get('/countries/:id', async (req, res)=>{
     // Devolver detalles de los paises y actividades turisticas
     const { id } = req.params;
+    console.log(id);
     try{
-        const response = await getDetails(id, data);
+        const response = await getDetails(id);
         res.status(200).json(response);
     }catch(exception){
         res.status(404).json({ error: exception.message });

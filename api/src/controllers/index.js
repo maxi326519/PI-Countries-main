@@ -41,7 +41,7 @@ async function getData(){
         return {
             id: e.fifa,
             name: e.name.common,
-            img: e.flags,
+            img: e.flags[0],
             continent: e.continent,
             capital: e.capital,
             subregion: e.subregion,
@@ -59,16 +59,25 @@ async function getCountriesList(){
             name: c.name.official,
             continent: c.continents,
             population: c.population,
-            img: c.flags
+            img: c.flags[0]
         }
     });
 }
 
 async function getDetails(id){
     const data = readData();
-    const response = data.find(e => e.id === id.toUpperCase());
+    const response = data.find(e => e.fifa === id.toUpperCase());
     if(!response) throw new Error('No se encontro el pais con es id');
-    return response; 
+    return {
+        id: response.fifa,
+        name: response.name.common,
+        img: response.flags[0],
+        continent: response.continents,
+        capital: response.capital,
+        subregion: response.subregion,
+        area: response.area,
+        population: response.population
+    }; 
 }
 
 async function getCountrie(name){
