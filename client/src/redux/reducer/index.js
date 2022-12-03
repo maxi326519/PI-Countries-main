@@ -1,16 +1,19 @@
 import { bindActionCreators } from 'redux';
 import {
-    GET_COUNTRIE,
+    GET_COUNTRIE_BY_NAME,
     GET_DETAILS,
     ADD_ACTIVITY,
     ORDER_COUNTRIES,
     FILTER_COUNTRIES,
-    GET_COUNTRIES_LIST
+    GET_COUNTRIES_LIST,
+    CLEAR_ERRORS
 } from '../actions';
 
 const initialState = {
-    list: [],
-    countries: [],
+    list: {
+        data: [],
+        error: {}
+    },
     details: [],
     filters: {},
     activities: []
@@ -22,21 +25,40 @@ export default function rootReducer(state = initialState, action){
         case GET_COUNTRIES_LIST:
             return {
                 ...state,
-                list: action.payload.sort((a, b) =>{
-                    if (a.name > b.name) {
-                        return 1;
-                      }
-                      if (a.name < b.name) {
-                        return -1;
-                      }
-                      return 0;
-                })
+                list: {
+                    data: action.payload.sort((a, b) =>{
+                        if (a.name > b.name) {
+                            return 1;
+                          }
+                          if (a.name < b.name) {
+                            return -1;
+                          }
+                          return 0;
+                    }),
+                    error: {}
+                }
             }   
 
-        case GET_COUNTRIE:
-            return {
-                ...state,
-                countries: [ ...action.payload ]
+        case GET_COUNTRIE_BY_NAME:
+
+            if(Array.isArray(action.payload)){
+                return {
+                    ...state,
+                    list: {
+                        data: [ ...action.payload ],
+                        error: {}
+                    }
+                }
+            }else{
+                return {
+                    ...state,
+                    list: {
+                        data: state.list.data,
+                        error: {
+                            message: action.payload.error
+                        }
+                    }
+                }
             }
 
         case GET_DETAILS:
@@ -54,7 +76,10 @@ export default function rootReducer(state = initialState, action){
         case ORDER_COUNTRIES:
             return {
                 ...state,
-                list: [ ...state.list.reverse() ]
+                list: {
+                    ...state.list,
+                    data: [ ...state.list.data.reverse() ]
+                }
             }
 
         case FILTER_COUNTRIES:
@@ -63,6 +88,15 @@ export default function rootReducer(state = initialState, action){
                 filters: action.payload
             }
         
+        case CLEAR_ERRORS:
+            console.log('clear errors');
+            return{
+                ...state,
+                list: {
+                    ...state.list,
+                    error: {}
+                }
+            }
         default:
             return { ...state }
     }

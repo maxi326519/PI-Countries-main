@@ -1,6 +1,5 @@
-const axios = require('axios');
 const fs = require('fs');
-const { db, Op, Country } = require('../db.js');
+const { Country } = require('../db.js');
 
 function readData(){
     return JSON.parse(fs.readFileSync('data.json', 'utf-8'));
@@ -66,10 +65,22 @@ async function addActivity(data){
     console.log(readedData);
 }
 
+function filter(data, filter){
+    return data.filter(d => {
+        if(data.continent.toLowerCase().includes('america')) return filter.america;
+        if(data.continent.toLowerCase().includes('europe')) return filter.europe;
+        if(data.continent.toLowerCase().includes('asia')) return filter.asia;
+        if(data.continent.toLowerCase().includes('africa')) return filter.africa;
+        if(data.continent.toLowerCase().includes('oceania')) return filter.oceania;
+        if(data.continent.toLowerCase().includes('antarctica')) return filter.antarctica;
+    })
+}
+
 module.exports = {
     getData,
     getCountriesList,
     getDetails,
     getCountrie,
-    addActivity
+    addActivity,
+    filter
 }

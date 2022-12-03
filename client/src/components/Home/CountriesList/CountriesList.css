@@ -1,4 +1,6 @@
 .countries-list__container{
+    position: relative;
+    z-index: 50px;
     flex-grow: 1;
     display: flex;
     justify-content: center;

@@ -1,0 +1,51 @@
+.filters{
+    position: relative;
+    z-index: 300;
+    background-color: #333;
+}
+
+.filters__btn-drop-dawn{
+    width: 100%;
+    margin: 0px !important;
+}
+
+.filters__container{
+    position: absolute;
+    z-index: 300px;
+    height: max-content;
+    overflow: hidden;
+    border-radius: 0 10px 10px 10px;
+    box-shadow: 0 0 10px 5px #0004;
+    background-color: #333;
+}
+
+.filters__options{
+    display: flex;
+    padding: 10px;
+    width: 150px;
+    -webkit-user-select: none;
+    user-select: none;
+}
+
+.filters__options:hover{
+    background-color: #555;
+    cursor: pointer;
+}
+
+.filters__options:hover input{
+    cursor: pointer;
+}
+
+.filters__options:active{
+    filter: brightness(80%);
+}
+
+.filters__options span{
+    flex-grow: 1;
+    text-align: left;
+}
+
+.filters__btn{
+    margin: 10px 0 !important;
+    border-radius: 5px !important;
+}

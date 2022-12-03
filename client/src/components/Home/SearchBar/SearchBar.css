@@ -26,6 +26,11 @@
     transition: 0.2s;
 }
 
+.search button{
+    cursor: pointer;
+}
+
+
 .search input:focus{
     color: var(--color);
     border-color: var(--color);

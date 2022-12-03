@@ -1,9 +1,10 @@
 export const GET_COUNTRIES_LIST = 'GET_COUNTRIES_LIST';
-export const GET_COUNTRIE = 'GET_COUNTRIE';
+export const GET_COUNTRIE_BY_NAME = 'GET_COUNTRIE_BY_NAME';
 export const GET_DETAILS = 'GET_DETAILS';
 export const ADD_ACTIVITY = 'FILTER_COUNTRIES';
 export const ORDER_COUNTRIES = 'ORDER_COUNTRIES';
 export const FILTER_COUNTRIES = 'FILTER_COUNTRIES';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export function getCountriesList(){
     return dispatch => {
@@ -21,13 +22,13 @@ export function getCountriesList(){
     }
 }
 
-export function getCountrie(name){
+export function getCountrieByName(name){
     return dispatch => {
         return fetch(`http://localhost:3001/countries?name=${name}`)
             .then(res => res.json())
             .then( data => {
                 dispatch({
-                    type: GET_COUNTRIE,
+                    type: GET_COUNTRIE_BY_NAME,
                     payload: data
                 })
             })
@@ -78,11 +79,34 @@ export function orderCountries(order){
     }
 }
 
-export function filterCountries(filters){
+export function filterCountries(filter){
+    console.log(filter);
+    return dispatch => {
+        return fetch(`http://localhost:3001/countries`, {
+                headers: {
+                  'Accept': 'application/json',
+                  'Content-Type': 'application/json'
+                },
+                method: "GET",
+                body: JSON.stringify({ ...filter })
+            })
+            .then(res => res.json())
+            .then(data => {
+                dispatch({
+                    type: FILTER_COUNTRIES,
+                    payload: data
+                })
+            })
+            .catch( err => {
+                console.log(err)
+            });
+    }
+}
+
+export function clearErrors(){
     return dispatch => {
         dispatch({
-            type: FILTER_COUNTRIES,
-            payload: filters
+            type: CLEAR_ERRORS
         })
     }
 }

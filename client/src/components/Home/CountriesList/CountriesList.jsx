@@ -17,7 +17,7 @@ class CountriesList extends React.Component {
         super(props);
         this.amount = 10;
         this.filters = {
-          america: false,
+          america: true,
           europa: true,
           africa: true,
           asia: true,
@@ -86,7 +86,7 @@ class CountriesList extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    list: state.list,
+    list: state.list.data,
   };
 }
 
