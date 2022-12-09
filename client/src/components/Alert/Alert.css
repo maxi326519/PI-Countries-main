@@ -13,19 +13,20 @@
 }
 
 .alert-content{
-    padding: 30px;
+    text-align: center;
+    padding: 30px 40px;
     border-radius: 20px;
     background-color: #222;
 }
 
-.alert-error{
-    font-size: 25px;
+.alert-tittle{
+    font-size: 30px;
     color: var(--color);
 }
 
 .alert-message{
     display: block;
-    padding: 10px 0px;
+    padding: 20px 0px;
     font-size: 20px;
 }
 

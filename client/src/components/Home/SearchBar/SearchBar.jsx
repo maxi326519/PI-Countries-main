@@ -1,10 +1,12 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { getCountrieByName, orderCountries, filterCountries, getCountriesList } from '../../../redux/actions';
+import { Link } from 'react-router-dom';
 
 import Filter from './Filters/Filters';
 import "./SearchBar.css";
 import change from "../../../assets/svg/change.svg";
+
 
 class SearchBar extends React.Component {
   constructor(props) {

@@ -68,6 +68,7 @@ async function getDetails(id){
 }
 
 async function addActivity(data){
+    console.log(data);
     if(!data.name || !data.dificulty || !data.duration || !data.season) throw new Error('bad request')
 
     const exist = await Activity.findOne({ where: {name: data.name } });

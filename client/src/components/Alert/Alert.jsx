@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './ErrorAlert.css';
+import './Alert.css';
 
 export default class ErrorAlert extends React.Component{
 
@@ -23,7 +23,11 @@ export default class ErrorAlert extends React.Component{
         return(
             <div className="alert-back" style={ this.state }>
                 <div className="alert-content">
-                    <span className="alert-error">Error:</span>
+                    {
+                        this.props.error
+                        ? <span className="alert-tittle">Error</span>
+                        : <span className="alert-tittle">Message</span>
+                    }
                     <span className="alert-message">{ this.props.message }</span>
                     <button className="alert-close" onClick={ this.handleChange }>Accept</button>
                 </div>

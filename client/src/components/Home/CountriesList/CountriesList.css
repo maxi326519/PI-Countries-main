@@ -1,7 +1,8 @@
 .countries-list__container{
-    position: relative;
-    z-index: 50px;
     flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    z-index: 50px;
     display: flex;
     justify-content: center;
     flex-wrAP: wrap;

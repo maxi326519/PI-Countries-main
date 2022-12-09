@@ -2,16 +2,68 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
-    align-items: center;
-
-    background-color: gray;
+    padding-top: 50px;
+    background-color:var(--background);
 }
 
-.activity form{
+.activity form, .activity .panel{
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 400px;
+    height: max-content;
+    margin: 20px 30px;
     padding: 20px;
+    border-radius: 10px;
+    border: 2px solid #222;
+    background-color: #333;
+    box-shadow: 0 0 10px 5px #1114;
+}
 
-    background-color: red;
+.activity form h2{
+    text-align: center;
+    font-size: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid gray;
+}
+
+.activity label{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.activity input{
+    padding: 10px 20px;
+    font-size: 15px;
+    background-color: inherit;
+    border: none;
+    color: white;
+    border-bottom: 2px solid var(--color);
+}
+
+.activity input:hover{
+    outline: 1px solid gray;
+}
+
+.activity input:focus{
+    background-color: #1115;
+    outline: none;
+}
+
+.activity button[type="submit"]{
+    margin-top: 30px;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 15px;
+    border: none;
+    color: var(--color);
+    background-color: #222;
+}
+
+.activity button[type="submit"]:hover{
+    outline: 1px solid var(--color);
+}
+
+.activity button[type="submit"]:active{
+    filter: brightness(60%);
 }

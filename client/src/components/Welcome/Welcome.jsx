@@ -8,8 +8,8 @@ export default class Welcome extends React.Component{
     render(){
         return(
             <div className='welcome'>
-                <h2>Welcome to the countries app!</h2>
-                <Link to='/countries/page/1'>Let's go</Link>
+                <h2 className='toBottom'>Welcome to the countries app!</h2>
+                <Link className='toTop' to='/countries/page/1'>Let's go</Link>
             </div>
         )
     }

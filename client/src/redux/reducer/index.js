@@ -14,7 +14,10 @@ const initialState = {
         error: {}
     },
     details: [],
-    activities: []
+    activities: {
+        message: null,
+        error: null
+    }
 }
 
 export default function rootReducer(state = initialState, action){
@@ -66,10 +69,22 @@ export default function rootReducer(state = initialState, action){
             }
 
         case ADD_ACTIVITY:
-            console.log(action.payload);
-            return {
-                ...state,
-                activities: [ ...state.activities, action.payload ]
+            if(action.payload.hasOwnProperty('message')){
+                return {
+                    ...state,
+                    activities: {
+                        message: action.payload.message,
+                        error: null
+                    }
+                }
+            }else{
+                return {
+                    ...state,
+                    activities: {
+                        message: null,
+                        error: action.payload.error
+                    }
+                }
             }
 
         case ORDER_COUNTRIES:
@@ -105,6 +120,10 @@ export default function rootReducer(state = initialState, action){
                 list: {
                     ...state.list,
                     error: {}
+                },
+                activities: {
+                    message: null,
+                    error: null
                 }
             }
         default:

@@ -10,7 +10,7 @@ export default class Nav extends React.Component {
     return (
       <div className="nav-container">
         <nav>
-          <div className="logo-container">
+          <div className="logo-container toRight">
             <div className="logo">
               <Link to="/">
                 <img className='logo-img move' src={ countries } alt='logo'/>
@@ -20,7 +20,7 @@ export default class Nav extends React.Component {
               </Link>
             </div>
           </div>
-          <ul>
+          <ul className="toLeft">
             <li className="options"><Link to="/countries/page/1">Home</Link></li>
             <li className="options"><Link to="/add-activity">Add Activity</Link></li>
             <li className="options"><Link to="/about">About</Link></li>

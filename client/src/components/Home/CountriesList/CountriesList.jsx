@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { getCountriesList } from "../../../redux/actions";
 
 import PagesLinks from '../PagesLinks/PagesLinks';
+import Loading from '../../Loading/Loading';
 
 import CountrieCard from "./CountrieCard/CountrieCard";
 import "./CountriesList.css";
@@ -31,7 +32,8 @@ class CountriesList extends React.Component {
           maxPages={ Math.ceil(this.props.list.length / this.amount) }
         />
         <div className="countries-list__container">
-            {this.props.list?.map((countrie, i) => {
+            {this.props.list.length === 0 ? <Loading/> :
+            this.props.list?.map((countrie, i) => {
               const continent = [africa, europa, oceania, america, asia, antarctica];
               if ((i >= (this.amount * this.props.page) - this.amount) && (i < this.amount * this.props.page)) {
                 return (
@@ -52,8 +54,13 @@ class CountriesList extends React.Component {
                   />
                 );
               }
+              return null;
             })}
         </div>
+        <PagesLinks
+          currentPage={ Number(this.props.page) }
+          maxPages={ Math.ceil(this.props.list.length / this.amount) }
+        />
       </div>
     );
   }

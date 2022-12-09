@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export const GET_COUNTRIES_LIST = 'GET_COUNTRIES_LIST';
 export const GET_COUNTRIE_BY_NAME = 'GET_COUNTRIE_BY_NAME';
 export const GET_DETAILS = 'GET_DETAILS';
@@ -54,19 +56,20 @@ export function getDetails(id){
     } 
 }
 
-export function addActivity(data){
-    return dispatch => {
-        return fetch('http://localhost:3001/activities')
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: ADD_ACTIVITY,
-                    payload: data
-                })
+export function addActivity(body){
+    return async dispatch => {
+        try{
+            const data = await axios.post('http://localhost:3001/activities', body)
+            dispatch({
+                type: ADD_ACTIVITY,
+                payload: data.data
             })
-            .catch( err => {
-                console.log(err)
-            });
+        }catch(exception){
+            dispatch({
+                type: ADD_ACTIVITY,
+                payload: exception.response.data
+            })
+        }
     }
 }
 
