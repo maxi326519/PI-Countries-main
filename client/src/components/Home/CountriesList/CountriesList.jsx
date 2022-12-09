@@ -14,10 +14,11 @@ import oceania from "../../../assets/svg/continents/Oceania.svg";
 import antarctica from "../../../assets/svg/continents/Antarctica.svg";
 
 class CountriesList extends React.Component {
-    constructor(props){
-        super(props);
-        this.amount = 10;
-    }
+  constructor(props){
+      super(props);
+      this.amount = 10;
+  }
+
   componentDidMount() {
     this.props.getCountriesList();
   }

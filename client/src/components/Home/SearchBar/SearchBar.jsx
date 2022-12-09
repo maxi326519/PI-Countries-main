@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { getCountrieByName, orderCountries, filterCountries } from '../../../redux/actions';
+import { getCountrieByName, orderCountries, filterCountries, getCountriesList } from '../../../redux/actions';
 
 import Filter from './Filters/Filters';
 import "./SearchBar.css";
@@ -21,6 +21,7 @@ class SearchBar extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    if(this.state.country === '' || this.state.country === ' ') this.props.getCountriesList();
     this.props.getCountrieByName(this.state.country);
   }
 
@@ -58,6 +59,7 @@ class SearchBar extends React.Component {
 function mapDispatchToProps(dispatch){
   return{
     getCountrieByName: name => dispatch(getCountrieByName(name)),
+    getCountriesList: name => dispatch(getCountriesList(name)),
     orderCountries: () => dispatch(orderCountries()),
     filterCountries: filters => dispatch(filterCountries(filters))
   }

@@ -1,7 +1,7 @@
 export const GET_COUNTRIES_LIST = 'GET_COUNTRIES_LIST';
 export const GET_COUNTRIE_BY_NAME = 'GET_COUNTRIE_BY_NAME';
 export const GET_DETAILS = 'GET_DETAILS';
-export const ADD_ACTIVITY = 'FILTER_COUNTRIES';
+export const ADD_ACTIVITY = 'ADD_ACTIVITY';
 export const ORDER_COUNTRIES = 'ORDER_COUNTRIES';
 export const FILTER_COUNTRIES = 'FILTER_COUNTRIES';
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
@@ -79,27 +79,12 @@ export function orderCountries(order){
     }
 }
 
-export function filterCountries(filter){
-    console.log(filter);
+export function filterCountries(filters){
     return dispatch => {
-        return fetch(`http://localhost:3001/countries`, {
-                headers: {
-                  'Accept': 'application/json',
-                  'Content-Type': 'application/json'
-                },
-                method: "GET",
-                body: JSON.stringify({ ...filter })
-            })
-            .then(res => res.json())
-            .then(data => {
-                dispatch({
-                    type: FILTER_COUNTRIES,
-                    payload: data
-                })
-            })
-            .catch( err => {
-                console.log(err)
-            });
+        dispatch({
+            type: FILTER_COUNTRIES,
+            payload: filters
+        })
     }
 }
 

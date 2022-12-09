@@ -1,4 +1,3 @@
-import { bindActionCreators } from 'redux';
 import {
     GET_COUNTRIE_BY_NAME,
     GET_DETAILS,
@@ -15,7 +14,6 @@ const initialState = {
         error: {}
     },
     details: [],
-    filters: {},
     activities: []
 }
 
@@ -68,6 +66,7 @@ export default function rootReducer(state = initialState, action){
             }
 
         case ADD_ACTIVITY:
+            console.log(action.payload);
             return {
                 ...state,
                 activities: [ ...state.activities, action.payload ]
@@ -83,9 +82,20 @@ export default function rootReducer(state = initialState, action){
             }
 
         case FILTER_COUNTRIES:
+            console.log(action.payload);
             return {
                 ...state,
-                filters: action.payload
+                list: {
+                    data: state.list.data.filter( c =>{
+                        if(c.continent.includes('America')) return action.payload.america
+                        if(c.continent === 'Europe') return action.payload.europe
+                        if(c.continent === 'Asia') return action.payload.asia
+                        if(c.continent === 'Africa') return action.payload.africa
+                        if(c.continent === 'Antarctica') return action.payload.antarctica
+                        return false;
+                    }),
+                    error: {}
+                }
             }
         
         case CLEAR_ERRORS:

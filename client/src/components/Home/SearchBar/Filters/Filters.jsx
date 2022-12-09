@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { filterCountries } from '../../../../redux/actions';
+import { filterCountries, getCountriesList } from '../../../../redux/actions';
 
 import './Filter.css';
 
@@ -34,16 +34,17 @@ class Filters extends React.Component{
             this.setState({ ...this.state, display: { display: 'none' } })
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
+        await this.props.getCountriesList();
         this.props.filterCountries(this.state.filter);
     }
 
     render(){
         return(
-            <form className="filters" onSubmit={ this.handleSubmit }>
+            <div className="filters" onSubmit={ this.handleSubmit }>
                 <button className="filters__btn-drop-dawn" onClick={ this.handleDisplay }>v Filter</button>
-                <div className="filters__container" style={ this.state.display }>
+                <form className="filters__container" style={ this.state.display }>
                     <div className='filters__options' onClick={() => { this.handleChange('america') } }>
                         <span>America</span>
                         <input type='checkbox' name='america' checked={ this.state.filter.america } onChange={(e) => { this.handleChange(e.target.name) }}/>
@@ -74,15 +75,16 @@ class Filters extends React.Component{
                         <input type='checkbox' name='antarctica' checked={ this.state.filter.antarctica } onChange={(e) => { this.handleChange(e.target.name) }}/>
                     </div>
                     <button className='filters__btn' type='submit'>Apply</button>
-                </div>
-            </form>
+                </form>
+            </div>
         )
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return{
-        filterCountries: filters => dispatch(filterCountries(filters))
+        filterCountries: filters => dispatch(filterCountries(filters)),
+        getCountriesList: filters => dispatch(getCountriesList())
     }
 }
 
