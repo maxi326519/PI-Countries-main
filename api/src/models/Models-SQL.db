@@ -1,0 +1,19 @@
+CREATE TABLE country(
+    ID VARCHAR(3) PRIMARY KEY,
+    name VARCHAR(50),
+    img VARCHAR(250),
+    continent VARCHAR(20),
+    capital VARCHAR(50),
+    subregion VARCHAR(20),
+    area FLOAT,
+    population INTEGER,
+    FOREIGN KEY (ID) REFERENCES activity
+);
+
+CREATE TABLE activity(
+    ID INTEGER PRIMARY KEY,
+    name VARCHAR(50) UNIQUE,
+    dificultad INTEGER,
+    duracion INTEGER,
+    temporada VARCHAR(20)
+);

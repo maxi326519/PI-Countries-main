@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { Country } = require('../db.js');
+const { Country, Activity } = require('../db.js');
 
 function readData(){
     return JSON.parse(fs.readFileSync('data.json', 'utf-8'));
@@ -9,7 +9,12 @@ async function getData(){
     const consult = await Country.findAndCountAll();
     
     if(consult.count === 0){
-        let data = readData(); // Cambiar por un fetch
+        let data
+/*         await fetch('https://restcountries.com/v3/all')
+        .then( res => res.json() )
+        .then( res => data = res )
+        .catch( err => console.log(err) ) */
+        data = readData();
 
         data.map(async e => {
             await Country.create({
@@ -54,26 +59,33 @@ async function getCountrie(name){
 
 async function getDetails(id){
     const consult = await Country.findOne({
-        where: { id: id }
+        where: { id: id },
+        include: Activity
     });
-    if(!consult) throw new Error(`Country ${id} not found`);
+    if(!consult) throw new Error(`country ${id} not found`);
+
     return consult;
 }
 
 async function addActivity(data){
-    const readedData = readActivity();
-    console.log(readedData);
-}
+    if(!data.name || !data.dificulty || !data.duration || !data.season) throw new Error('bad request')
 
-function filter(data, filter){
-    return data.filter(d => {
-        if(data.continent.toLowerCase().includes('america')) return filter.america;
-        if(data.continent.toLowerCase().includes('europe')) return filter.europe;
-        if(data.continent.toLowerCase().includes('asia')) return filter.asia;
-        if(data.continent.toLowerCase().includes('africa')) return filter.africa;
-        if(data.continent.toLowerCase().includes('oceania')) return filter.oceania;
-        if(data.continent.toLowerCase().includes('antarctica')) return filter.antarctica;
+    const exist = await Activity.findOne({ where: {name: data.name } });
+    
+    if(exist) throw Error('The activity already exist');
+
+    const actividad = await Activity.create({
+        name: data.name,
+        dificulty: data.dificulty,
+        duration: data.duration,
+        season: data.season
     })
+
+    const countries = await Country.findAll({ where: { id: data.countries } })
+
+    countries.forEach(async countrie => {
+        await actividad.addCountry(countrie);
+    });
 }
 
 module.exports = {
@@ -81,6 +93,5 @@ module.exports = {
     getCountriesList,
     getDetails,
     getCountrie,
-    addActivity,
-    filter
+    addActivity
 }
