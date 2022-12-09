@@ -28,18 +28,20 @@ class AddCountrie extends React.Component {
 
     render(){
         return(
-            <div className="add-countrie toBottom">
+            <div className="add-countrie toTop">
                 <div className="add-form panel">
                     <input type='search' placeholder='Search countrie' onChange={ this.handleChange }/>
-                    <div className="countries-added">
-                        {this.props.countriesAdded?.map( (countrie, i) => {
-                            return(
-                                <div key={ i } className="img-container spacing toLeft">
-                                    <button className="btn-remove"onClick={ () => this.props.handleRemove(countrie.id) }>X</button>
-                                    <img src={ countrie.img } alt={ countrie.id }/>
-                                </div>
-                            )
-                        })}
+                    <div className="countries-scroll">
+                        <div className="countries-added">
+                            {this.props.countriesAdded?.map( (countrie, i) => {
+                                return(
+                                    <div key={ i } className="img-container spacing toLeft">
+                                        <button className="btn-remove"onClick={ () => this.props.handleRemove(countrie.id) }>X</button>
+                                        <img src={ countrie.img } alt={ countrie.id }/>
+                                    </div>
+                                )
+                            })}
+                        </div>
                     </div>
                     <div className="countries-panel">
                         {this.props.countries.length === 0 ?
@@ -47,15 +49,15 @@ class AddCountrie extends React.Component {
                         : this.props.countries.filter(c => c.name.toLowerCase().includes(this.state.search.toLowerCase()))
                             .map((countrie, i) => {
                                 return (
-                                    <div key={ i } className="countries-content">
-                                        <div className="img-container toLeft">
+                                    <div key={ i } className="countries-content toRight">
+                                        <div className="img-container">
                                             <img src={ countrie.img } alt={ countrie.id }/>
                                         </div>
-                                        <span className="toLeft">{ countrie.name }</span>
+                                        <span>{ countrie.name }</span>
                                         {this.props.countriesAdded.find(c => c.id === countrie.id)?
-                                            <button className="btn-add toRight" onClick={ () => this.props.handleRemove(countrie.id) }>Remove</button>
+                                            <button className="btn-add" onClick={ () => this.props.handleRemove(countrie.id) }>Remove</button>
                                             :
-                                            <button className="btn-add toRight" onClick={ () => this.props.handleAddCountrie(countrie) }>Add</button>
+                                            <button className="btn-add" onClick={ () => this.props.handleAddCountrie(countrie) }>Add</button>
                                         }
                                     </div>
                                 )

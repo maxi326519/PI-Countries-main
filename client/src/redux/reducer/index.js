@@ -107,6 +107,7 @@ export default function rootReducer(state = initialState, action){
                         if(c.continent === 'Asia') return action.payload.asia
                         if(c.continent === 'Africa') return action.payload.africa
                         if(c.continent === 'Antarctica') return action.payload.antarctica
+                        if(c.continent === 'Oceania') return action.payload.oceania
                         return false;
                     }),
                     error: {}

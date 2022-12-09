@@ -5,7 +5,7 @@ import './ActivitiesList.css';
 export default class ActivitiesList extends React.Component {
     render(){
         return(
-            <div className="activity-table">
+            <div className="activity-table toTop">
                 <h2>Tourist Activities</h2>
                 <div className="activity-row">
                     <span>Name</span>

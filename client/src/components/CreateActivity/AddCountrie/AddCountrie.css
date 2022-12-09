@@ -4,13 +4,20 @@
     padding: 10px 0;
 }
 
-
 /* Countries added */
 .countries-added{
     display: flex;
     align-items: center;
     padding: 0 10px;
+    width: 100%;
     height: 50px;
+    width: max-content;
+}
+
+.countries-scroll{
+    width: 100%;
+    overflow: hidden;
+    overflow-x: scroll;
     background-color: #111;
 }
 
@@ -48,16 +55,32 @@
 .countries-panel::-webkit-scrollbar{
     width: 10px;
     border-radius: 0 0 10px 0;
-    background-color: #444;
+    background-color: #282828;
 }
 
 .countries-panel::-webkit-scrollbar-thumb{
+    width: 5px;
     width: 5px;
     border-radius: 5px;
     background-color: var(--color);
 }
 
 .countries-panel::-webkit-scrollbar-thumb:hover{
+    filter: brightness(60%);
+}
+
+.countries-scroll::-webkit-scrollbar{
+    height: 8px;
+    background-color: #151515;
+}
+
+.countries-scroll::-webkit-scrollbar-thumb{
+    height: 5px;
+    border-radius: 5px;
+    background-color: var(--color);
+}
+
+.countries-scroll::-webkit-scrollbar-thumb:hover{
     filter: brightness(60%);
 }
 

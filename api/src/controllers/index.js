@@ -10,11 +10,11 @@ async function getData(){
     
     if(consult.count === 0){
         let data
-/*         await fetch('https://restcountries.com/v3/all')
+        await fetch('https://restcountries.com/v3/all')
         .then( res => res.json() )
         .then( res => data = res )
-        .catch( err => console.log(err) ) */
-        data = readData();
+        .catch( err => console.log(err) )
+/*         data = readData(); */
 
         data.map(async e => {
             await Country.create({

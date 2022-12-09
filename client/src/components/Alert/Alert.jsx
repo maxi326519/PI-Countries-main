@@ -22,7 +22,7 @@ export default class ErrorAlert extends React.Component{
     render(){
         return(
             <div className="alert-back" style={ this.state }>
-                <div className="alert-content">
+                <div className="alert-content toTop">
                     {
                         this.props.error
                         ? <span className="alert-tittle">Error</span>

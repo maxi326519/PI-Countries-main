@@ -23,7 +23,7 @@ export default class Nav extends React.Component {
           <ul className="toLeft">
             <li className="options"><Link to="/countries/page/1">Home</Link></li>
             <li className="options"><Link to="/add-activity">Add Activity</Link></li>
-            <li className="options"><Link to="/about">About</Link></li>
+{/*             <li className="options"><Link to="/about">About</Link></li> */}
           </ul>
         </nav>
       </div>

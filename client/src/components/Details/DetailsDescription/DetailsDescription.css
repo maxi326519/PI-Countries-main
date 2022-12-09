@@ -1,0 +1,26 @@
+.details__text{
+    display: flex;
+    flex-direction: column;
+    padding-right: 30px;
+}
+
+.details__content{
+    display: flex;
+    flex-direction: column;
+    background-color: #333;
+    border: 1px solid gray;
+    margin: 5px;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+
+
+.details__text span b{
+    color: var(--color);
+}
+
+.details__text span:nth-child(2){
+    border-top: 1px solid gray;
+    margin-top: 5px;
+    padding-top: 5px;
+}

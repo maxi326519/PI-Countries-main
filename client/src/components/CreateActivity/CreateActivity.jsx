@@ -55,25 +55,38 @@ class CreateActivity extends React.Component{
         });
     }
 
+    handleVerification(){
+        if(this.state.name){}
+        if(this.state.dificult){}
+        if(this.state.name){}
+        if(this.state.name){}
+    }
+
     render(){
         return(
             <div className='activity'>
                 <form className='toTop' onSubmit={ this.handleSubmit }>
                     <h2 className='toRight'>Add tourist activity</h2>
 
-                    <label className='toRight'>Name:</label>
-                    <input type='text' name='name' placeholder='Ej: Sky' onChange={ this.handleChange }/>
+                    <label>Name:</label>
+                    <input type='text' name='name' required='true' placeholder='Ej: Sky' onChange={ this.handleChange }/>
 
-                    <label className='toRight'>Dificulty:</label>
-                    <input type='text' name='dificulty' placeholder='Ej: 7' onChange={ this.handleChange }/>
+                    <label>Dificulty:</label>
+                    <input type='number' name='dificulty' required='true' placeholder='Ej: 7' onChange={ this.handleChange }/>
 
-                    <label className='toRight'>Duration:</label>
-                    <input type='text' name='duration' placeholder='Ej: 2' onChange={ this.handleChange }/>
+                    <label>Duration:</label>
+                    <input type='time' name='duration' required='true' placeholder='Ej: 2' onChange={ this.handleChange }/>
 
-                    <label className='toRight'>Season:</label>
-                    <input type='text' name='season' placeholder='Options > Spring / Summer / Autum / Winter / All year' onChange={ this.handleChange }/>
+                    <label>Season:</label>
+                    <select type='text' name='season' required='true' placeholder='Options > Spring / Summer / Autum / Winter / All year' onChange={ this.handleChange }>
+                        <option value='Spring'>Spring</option>
+                        <option value='Summer'>Summer</option>
+                        <option value='Autum'>Autum</option>
+                        <option value='Winter'>Winter</option>
+                        <option value='All year'>All year</option>
+                    </select>
 
-                    <button className='toRight' type="submit">Save</button>
+                    <button type="submit">Save</button>
                 </form>
                 <AddCountrie
                     countriesAdded={ this.state.countries }

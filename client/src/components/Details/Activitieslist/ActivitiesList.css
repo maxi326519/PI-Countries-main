@@ -2,12 +2,17 @@
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
+    overflow: hidden;
+    border-radius: 15px;
+    border: 1px solid gray;
     background-color: #444;
 }
 
 .activity-table h2{
     text-align: center;
     padding: 10px;
+    color: var(--color);
     background-color: #222;
 }
 
