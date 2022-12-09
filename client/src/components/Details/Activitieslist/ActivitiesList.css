@@ -1,0 +1,33 @@
+.activity-table{
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #444;
+}
+
+.activity-table h2{
+    text-align: center;
+    padding: 10px;
+    background-color: #222;
+}
+
+.activity-row:nth-child(2){
+    background-color: #333;
+}
+
+.activity-row{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.activity-row span{
+    display: inline-block;
+    padding: 10px;
+}
+
+.activities-empty{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}

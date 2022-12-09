@@ -1,0 +1,32 @@
+.page-not-found{
+    text-align: center;
+    flex-grow: 1;
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.page-not-found div{
+    text-align: center;
+}
+
+.page-not-found .container{
+    position: relative;
+    animation: 2s ease-in-out not-found alternate infinite;
+}
+
+.page-not-found h2{
+    font-size: 50px;
+    color: var(--color);
+}
+
+.page-not-found span{
+    font-size: 30px;
+}
+
+@keyframes not-found {
+    from {top: -30px}
+    to {top: 0}
+}

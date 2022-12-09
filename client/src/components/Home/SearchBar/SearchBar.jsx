@@ -59,7 +59,7 @@ function mapDispatchToProps(dispatch){
   return{
     getCountrieByName: name => dispatch(getCountrieByName(name)),
     orderCountries: () => dispatch(orderCountries()),
-    filterCountries: filters => dispatch(filters)
+    filterCountries: filters => dispatch(filterCountries(filters))
   }
 }
 

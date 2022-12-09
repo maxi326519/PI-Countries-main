@@ -1,0 +1,15 @@
+.toBottom{
+    position: relative;
+    animation: 0.5s bottom forwards;
+}
+
+@keyframes bottom{
+    0% {
+        top: 5%;
+        opacity: 0;
+    }
+    100% {
+        top: 0;
+        opacity: 100%;
+    }
+}

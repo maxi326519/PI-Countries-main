@@ -1,0 +1,66 @@
+.search-form{
+    display: flex;
+}
+
+
+/* Countries added */
+.countries-added{
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 50px;
+    background-color: #111;
+}
+
+.countries-added button{
+    display: none;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: none;
+    color: white;
+    background-color: #2228;
+}
+
+.spacing{margin: 0 5px}
+
+.img-container:hover button{
+    display: inline-block;
+}
+
+/* Countries Panel */
+.countries-panel{
+    max-height: 200px;
+    overflow: hidden;
+    overflow-y: scroll;
+    background-color: #222;
+}
+
+.countries-content{
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.countries-content span{
+    flex-grow: 1;
+    margin-left: 20px
+}
+
+.img-container{
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.img-container img{
+    height: 100%;
+}
+
+.btn-add{
+
+}
