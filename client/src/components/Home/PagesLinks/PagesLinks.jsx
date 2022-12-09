@@ -37,13 +37,11 @@ export default class PagesLinks extends React.Component{
                         <Link
                             className={ this.props.currentPage <= 1 ? 'disabled-link' : null }
                             to={`/countries/page/${ this.handleCheck('resta') }`}
-                            onClick={this.props.handleUpdate}
                             >{'<'}</Link>
                         <span>{ `${ this.props.currentPage } de ${ this.props.maxPages }` }</span>
                         <Link
                             className={ this.props.currentPage >= this.props.maxPages ? 'disabled-link' : null }
                             to={`/countries/page/${ this.handleCheck('suma') }`}
-                            onClick={this.props.handleUpdate}
                         >{'>'}</Link>
                     </div>
                 )})()}
